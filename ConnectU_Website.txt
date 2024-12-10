@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N Number Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .popup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .popup input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        #connection-page {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="popup" class="popup">
+        <h2>Enter Your N Number</h2>
+        <input type="text" id="nNumberInput" placeholder="Type N Number (e.g., N01234567)" />
+        <button onclick="submitNNumber()">Submit</button>
+    </div>
+    <div id="connection-page">
+        <h2>Suggested Connection</h2>
+        <p id="nNumberDisplay"></p>
+        <p>Your N Number is successfully connected!</p>
+    </div>
+
+    <script>
+        function submitNNumber() {
+            const nNumber = document.getElementById("nNumberInput").value;
+            if (!nNumber || !/^N\d{8}$/.test(nNumber)) {
+                alert("Please enter a valid N Number (e.g., N01234567)");
+                return;
+            }
+
+            // Hide the popup and show the connection page
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("connection-page").style.display = "block";
+
+            // Display the entered N Number
+            document.getElementById("nNumberDisplay").innerText = `N Number: ${nNumber}`;
+        }
+    </script>
+</body>
+</html>
